@@ -1,0 +1,25 @@
+{
+    "name": "client",
+    "version": "1.0.0",
+    "description": "Chat client",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/ungarscool1/entretien-centreon.git"
+    },
+    "keywords": [
+        "socket",
+        "cli",
+        "client",
+        "chat"
+    ],
+    "author": "Léo Godard <leo.godard@epitech.eu>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ungarscool1/entretien-centreon/issues"
+    },
+    "homepage": "https://github.com/ungarscool1/entretien-centreon#readme"
+}
