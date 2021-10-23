@@ -3,7 +3,11 @@
     "version": "1.0.0",
     "description": "Chat server",
     "main": "index.js",
+    "bin": {
+        "server": "./bin/server"
+    },
     "scripts": {
+        "start": "tsc && node dist/app.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -20,5 +24,13 @@
     "bugs": {
         "url": "https://github.com/ungarscool1/entretien-centreon/issues"
     },
-    "homepage": "https://github.com/ungarscool1/entretien-centreon#readme"
+    "homepage": "https://github.com/ungarscool1/entretien-centreon#readme",
+    "dependencies": {
+        "socket.io": "^4.3.1"
+    },
+    "devDependencies": {
+        "@types/socket.io": "^3.0.2",
+        "tslint": "^6.1.3",
+        "typescript": "^4.4.4"
+    }
 }
