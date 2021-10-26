@@ -47,7 +47,7 @@ class Main {
                 socket.broadcast.emit("message", message);
             });
             socket.on("register", (message: string) => {
-                if (this.users.find(user => user.username === message)) {
+                if (this.users.find(user => user.username === message) || message === "Server") {
                     socket.emit("register", false);
                 } else {
                     if (message.length > 20 || message.length < 3) {
