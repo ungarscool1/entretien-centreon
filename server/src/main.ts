@@ -46,6 +46,10 @@ class Main {
                 if (this.users.find(user => user.username === message)) {
                     socket.emit("register", false);
                 } else {
+                    if (message.length > 20 || message.length < 3) {
+                        socket.emit("register", false);
+                        return;
+                    }
                     this.users.push({
                         username: message,
                         ip: socket.handshake.address,

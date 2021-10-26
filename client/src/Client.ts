@@ -32,6 +32,11 @@ class Client {
 
     async promptUsername() {
         this.username = await prompter.prompt("Username: ")
+        if (this.username.length > 20 || this.username.length < 3) {
+            console.error("Username must be between 3 and 20 characters long")
+            this.promptUsername()
+            return
+        }
         this.socket.emit('register', this.username)
         this.socket.on('register', (status: boolean) => {
             this.validUsername = status

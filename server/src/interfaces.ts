@@ -8,3 +8,8 @@ export interface Imessage {
     from: string;
     message: string;
 }
+
+export interface IRegisterMessage {
+    status: boolean;
+    message: string;
+}
