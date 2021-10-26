@@ -6,6 +6,7 @@ import { Server } from "socket.io";
 class Main {
 
     parsedArgs: arguments;
+    usernames: string[] = [];
 
     /**
      * Run the application
@@ -21,6 +22,14 @@ class Main {
             
             socket.on("message", (message: string) => {
                 console.log(message);
+            });
+            socket.on("register", (message: string) => {
+                if (this.usernames.includes(message)) {
+                    socket.emit("register", "Username already taken");
+                } else {
+                    this.usernames.push(message);
+                    socket.emit("register", "Success");
+                }
             });
         })
     httpServer.listen(this.parsedArgs.port);
