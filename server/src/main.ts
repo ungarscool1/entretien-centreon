@@ -60,6 +60,12 @@ class Main {
                     socket.emit("register", true);
                 }
             });
+            socket.on("disconnect", () => {
+                let user: IUser = this.users.find(user => user.socketId === socket.id);
+                this.users.filter(user => user.socketId !== socket.id);
+                
+                socket.broadcast.emit("message", {from: "Server", message: `${user.username} left the chat`});
+            });
         })
         httpServer.listen(this.parsedArgs.port);
     }
