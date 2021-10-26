@@ -1,10 +1,10 @@
 import parser, {arguments} from "./argParser";
-import { io } from "socket.io-client";
-
+import Client from "./Client";
 
 class Main {
 
     parsedArgs: arguments;
+    client: Client;
 
     /**
      * Run the application
@@ -12,11 +12,8 @@ class Main {
      */
     run(args: string[]) {
         this.parsedArgs = parser.parse(args);
-        const socket = io("http://localhost:3000");
-        socket.on("connect", () => {
-            console.log(socket.connected); // true
-        });
-        socket.emit("message", "Hello World");
+        this.client = new Client(this.parsedArgs);
+        this.client.run()
     }
 }
 
