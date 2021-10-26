@@ -2,8 +2,8 @@ import parser, {arguments} from "./argParser";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { Imessage, IUser } from "./interfaces";
-import ololog from "ololog";
-
+import ololog, { error } from "ololog";
+import fs from "fs";
 
 class Main {
 
@@ -14,7 +14,11 @@ class Main {
     constructor() {
         this.log = ololog.configure({
             time: true,
-            locate: false
+            locate: false,
+            'render+' (text, { consoleMethod = '' }) {
+                fs.appendFile('logs.log', `${text}\n`, (err) => {});
+                return text
+            }
         });
     }
 
