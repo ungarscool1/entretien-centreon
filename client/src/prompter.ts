@@ -8,6 +8,9 @@ class Prompter {
             input: process.stdin,
             output: process.stdout,
         });
+        this.rl.on('SIGINT', () => {
+            process.exit(0);
+        });
     }
 
     /**

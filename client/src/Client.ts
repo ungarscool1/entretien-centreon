@@ -22,7 +22,9 @@ class Client {
         await this.promptUsername()
 
         this.socket.on('message', (data: { from: string, message: string }) => {
+            process.stdout.write('\r')
             this.log(`${data.from}: ${data.message}`);
+            process.stdout.write('> ');
         })
         while (true) {
             message = await prompter.prompt("> ")
