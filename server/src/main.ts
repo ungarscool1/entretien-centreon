@@ -67,7 +67,7 @@ class Main {
             socket.on("disconnect", () => {
                 let user: IUser = this.users.find(user => user.socketId === socket.id);
                 this.users.filter(user => user.socketId !== socket.id);
-                
+                this.log(`User #${user.username} (${user.ip} | ${user.socketId}) disconnect`);
                 socket.broadcast.emit("message", {from: "Server", message: `${user.username} left the chat`});
             });
         })
