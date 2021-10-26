@@ -15,15 +15,15 @@ class Client {
             time: true,
         });
         this.socket = io(`http://${args.ip}:${args.port}`);
-        this.socket.on('message', (data: { from: string, message: string }) => {
-            this.log(`${data.from}: ${data.message}`);
-        })
     }
 
     async run() {
         let message;
         await this.promptUsername()
 
+        this.socket.on('message', (data: { from: string, message: string }) => {
+            this.log(`${data.from}: ${data.message}`);
+        })
         while (true) {
             message = await prompter.prompt("> ")
             this.socket.emit('message', { 'from': this.username, 'message': message })
