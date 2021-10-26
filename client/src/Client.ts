@@ -26,6 +26,10 @@ class Client {
             this.log(`${data.from}: ${data.message}`);
             process.stdout.write('> ');
         })
+        this.socket.on('disconnect', () => {
+            this.log.info('Disconnected from server');
+            process.exit(0);
+        })
         while (true) {
             message = await prompter.prompt("> ")
             this.socket.emit('message', { 'from': this.username, 'message': message })
