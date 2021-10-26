@@ -1,0 +1,18 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Build client
+      working-directory: ./client
+      run: npm run build
+    - name: Build server
+      working-directory: ./server
+      run: npm run build
