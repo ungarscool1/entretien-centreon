@@ -22,6 +22,19 @@ class Prompter {
             });
         });
     }
+
+    /**
+     * Sleep for a given amount of time in milliseconds
+     * @param ms Milliseconds to sleep
+     * @returns Nothing
+     */
+    public async sleep(ms: number): Promise<void> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, ms);
+        });
+    }
 }
 
 let prompter = new Prompter();

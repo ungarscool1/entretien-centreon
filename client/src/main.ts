@@ -1,4 +1,4 @@
-import parser, {arguments} from "./argParser";
+import parser, { arguments } from "./argParser";
 import Client from "./Client";
 
 class Main {
